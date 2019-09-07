@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <html>
 <head>
-<title>canvas‚Åì‚é‚¨ŠG‚©‚«ƒc[ƒ‹</title>
+<title>canvasã§ä½œã‚‹ãŠçµµã‹ããƒ„ãƒ¼ãƒ«</title>
 
 <style>
 body {
@@ -29,17 +29,17 @@ background-color: #fff;
 <body>
 
 <canvas id="canvas" width="700" height="500"></canvas><br>
-<label>F<input id="color" type="color"></label>
-<label>‘¾‚³<input id="width" type="number" min="1" max="30"></label>
-<input type="button" id="delete_canvas" value="ƒNƒŠƒA" onClick="delete_canvas()">
-<input type="button2" id="pencil" value="‰”•M" width="35px" class="active" onClick="tool(1)">
-<input type="button3" id="eraser" value="Á‚µƒSƒ€" width="35px" onClick="tool(2)">
+<label>è‰²<input id="color" type="color"></label>
+<label>å¤ªã•<input id="width" type="number" min="1" max="30"></label>
+<input type="button" id="delete_canvas" value="ã‚¯ãƒªã‚¢" onClick="delete_canvas()">
+<input type="button2" id="pencil" value="é‰›ç­†" width="35px" class="active" onClick="tool(1)">
+<input type="button3" id="eraser" value="æ¶ˆã—ã‚´ãƒ " width="35px" onClick="tool(2)">
 
 
 <script type="text/javascript">
 
 var drawing = false;
-// ‘O‰ñ‚ÌÀ•W‚ğ‹L˜^‚·‚éi‰Šú’lF‚Oj
+// å‰å›ã®åº§æ¨™ã‚’è¨˜éŒ²ã™ã‚‹ï¼ˆåˆæœŸå€¤ï¼šï¼ï¼‰
 var before_x = 0;
 var before_y = 0;
 
@@ -47,21 +47,21 @@ var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 
 canvas.addEventListener('mousemove', draw_canvas);
-// ƒ}ƒEƒX‚ğƒNƒŠƒbƒN‚µ‚Ä‚é
+// ãƒã‚¦ã‚¹ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ã‚‹æ™‚
 canvas.addEventListener('mousedown', function(e) {
 drawing = true;
 var rect = e.target.getBoundingClientRect();
 before_x = e.clientX - rect.left;
 before_y = e.clientY - rect.top;
 });
-// ƒ}ƒEƒX‚ğƒNƒŠƒbƒN‚µ‚Ä‚È‚¢
+// ãƒã‚¦ã‚¹ã‚’ã‚¯ãƒªãƒƒã‚¯ã—ã¦ãªã„æ™‚
 canvas.addEventListener('mouseup', function() {
 drawing = false;
 });
 
-// •`‰æ‚Ìˆ—
+// æç”»ã®å‡¦ç†
 function draw_canvas(e) {
-// drawing‚ªtrue‚¶‚á‚È‚©‚Á‚½‚ç•Ô‚·
+// drawingãŒtrueã˜ã‚ƒãªã‹ã£ãŸã‚‰è¿”ã™
 if (!drawing){
 return
 };
@@ -73,7 +73,7 @@ var color = document.getElementById('color').value;
 var r = parseInt(color.substring(1,3), 16);
 var g = parseInt(color.substring(3,5), 16);
 var b = parseInt(color.substring(5,7), 16);
-// •`‰æ
+// æç”»
 ctx.lineCap = 'round';
 ctx.strokeStyle = 'rgb('+ r + ',' + g + ',' + b + ')';
 ctx.lineWidth = w;
@@ -82,16 +82,16 @@ ctx.moveTo(before_x, before_y);
 ctx.lineTo(x, y);
 ctx.stroke();
 ctx.closePath();
-// •`‰æÅŒã‚ÌÀ•W‚ğ‘O‰ñ‚ÌÀ•W‚É‘ã“ü‚·‚é
+// æç”»æœ€å¾Œã®åº§æ¨™ã‚’å‰å›ã®åº§æ¨™ã«ä»£å…¥ã™ã‚‹
 before_x = x;
 before_y = y;
 }
 
-// ƒNƒŠƒAƒ{ƒ^ƒ“ƒNƒŠƒbƒN
-// ƒNƒŠƒAƒ{ƒ^ƒ“ƒNƒŠƒbƒN‚µ‚½‚ÉƒAƒ‰[ƒg‚ğ•\¦
+// ã‚¯ãƒªã‚¢ãƒœã‚¿ãƒ³ã‚¯ãƒªãƒƒã‚¯æ™‚
+// ã‚¯ãƒªã‚¢ãƒœã‚¿ãƒ³ã‚¯ãƒªãƒƒã‚¯ã—ãŸæ™‚ã«ã‚¢ãƒ©ãƒ¼ãƒˆã‚’è¡¨ç¤º
 function delete_canvas(){
-ret = confirm('canvas‚Ì“à—e‚ğíœ‚µ‚Ü‚·B');
-// ƒAƒ‰[ƒg‚ÅuOKv‚ğ‘I‚ñ‚¾
+ret = confirm('canvasã®å†…å®¹ã‚’å‰Šé™¤ã—ã¾ã™ã€‚');
+// ã‚¢ãƒ©ãƒ¼ãƒˆã§ã€ŒOKã€ã‚’é¸ã‚“ã æ™‚
 if (ret == true){
 ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
@@ -99,16 +99,16 @@ ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 var pen = document.getElementById('pencil');
 var era = document.getElementById('eraser');
-// ‰”•M‚ÆÁ‚µƒSƒ€‚ÌØ‚è‘Ö‚¦
+// é‰›ç­†ã¨æ¶ˆã—ã‚´ãƒ ã®åˆ‡ã‚Šæ›¿ãˆ
 
 function tool(btnNum){
-// ƒNƒŠƒbƒN‚³‚êƒ{ƒ^ƒ“‚ª‰”•M‚¾‚Á‚½‚ç
+// ã‚¯ãƒªãƒƒã‚¯ã•ã‚Œãƒœã‚¿ãƒ³ãŒé‰›ç­†ã ã£ãŸã‚‰
 if (btnNum == 1){
 ctx.globalCompositeOperation = 'source-over';
 pen.className = 'active';
 era.className = '';
 }
-// ƒNƒŠƒbƒN‚³‚êƒ{ƒ^ƒ“‚ªÁ‚µƒSƒ€‚¾‚Á‚½‚ç
+// ã‚¯ãƒªãƒƒã‚¯ã•ã‚Œãƒœã‚¿ãƒ³ãŒæ¶ˆã—ã‚´ãƒ ã ã£ãŸã‚‰
 else if (btnNum == 2){
 ctx.globalCompositeOperation = 'destination-out';
 pen.className = '';
